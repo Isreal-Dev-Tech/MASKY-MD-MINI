@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MASKY-MINI-BOT | FREE ACCESS</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0d6020;
+      --secondary: #ff9d9d;
+      --accent: #32CD32;
+      --dark: #0f0f1e;
+      --light: #f0f0f5;
+      --glow: 0 0 10px rgb(13, 250, 2), 0 0 20px rgb(19, 100, 2);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--dark) 0%, rgb(19, 100, 2) 100%);
+      font-family: 'Rajdhani', sans-serif;
+      color: var(--light);
+      overflow-x: hidden;
+      position: relative;
+    }
+    
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url("https://files.catbox.moe/jwu3x9.jpeg") no-repeat center center;
+      background-size: cover;
+      opacity: 0.15;
+      z-index: -1;
+    }
+    
+    .particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+    
+    .particle {
+      position: absolute;
+      background: rgb(14, 500,8)
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      max-width: 450px;
+      padding: 20px;
+      z-index: 1;
+    }
+    
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    
+    .nav-item {
+      background: rgba(15, 15, 30, 0);
+      color: var(--light);
+      padding: 10px 15px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 1px solid rgb(13, 500, 2);
+    }
+    
+    .nav-item:hover {
+      background: rgb(19, 100, 2);
+      transform: translateY(-2px);
+    }
+    
+    .vip-badge {
+      background: linear-gradient(135deg, var(--primary) 0%, 100%);
+      color: rgb(50, 500, 0);
+      padding: 8px 20px;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      box-shadow: var(--glow);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .vip-badge i {
+      color: rgb(50, 500, 0);
+      animation: pulse 2s infinite;
+    }
+    
+    .box {
+      width: 100%;
+      padding: 30px;
+      position: relative;
+      text-align: center;
+      background: rgb(6, 40, 9);
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), var(--glow);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgb(19, 100, 2);
+      transform: perspective(1000px) rotateY(0deg);
+      transition: all 0.5s ease;
+      overflow: hidden;
+    }
+    
+    .box::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgb(44, 70, 2), transparent);
+      transform: rotate(45deg);
+      animation: shine 3s infinite;
+      z-index: 0;
+    }
+    
+    .box-content {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .logo {
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .logo-text {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 28px;
+      font-weight: 900;
+      background: linear-gradient(45deg, rgb(13, 100, 4), rgb(10, 250, 2), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 10px rgb(2, 150, 100);
+      letter-spacing: 2px;
+      margin-bottom: 5px;
+    }
+    
+    .logo-subtext {
+      font-size: 12px;
+      color: var(--secondary);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+    
+    .header {
+      margin-bottom: 25px;
+    }
+    
+    .header h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 500;
+      font-size: 18px;
+      color: var(--light);
+      margin-bottom: 15px;
+      text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    }
+    
+    .header h6 {
+      font-weight: 400;
+      font-size: 14px;
+      color: var(--secondary);
+      margin-bottom: 20px;
+    }
+    
+    .input-container {
+      display: flex;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 5px;
+      gap: 5px;
+      width: 100%;
+      margin-bottom: 20px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgb(13, 100, 2);
+    }
+    
+    .input-container input {
+      border-radius: 12px 0 0 12px;
+      background: rgba(232, 232, 232, 0.1);
+      width: 100%;
+      flex-basis: 75%;
+      padding: 15px;
+      border: none;
+      border-left: 3px solid var(--secondary);
+      color: var(--light);
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+    
+    .input-container input:focus {
+      border-left: 3px solid var(--primary);
+      outline: none;
+      background: rgba(232, 232, 232, 0.15);
+    }
+    
+    .input-container input::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+    }
+    
+    .input-container button {
+      flex-basis: 25%;
+      padding: 15px;
+      background: linear-gradient(135deg, var(--primary) 0%, rgb(40,50,4) 100%);
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: white;
+      border: none;
+      border-radius: 0 12px 12px 0;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 14px;
+    }
+    
+    .input-container button:hover {
+      background: linear-gradient(135deg, var(--accent) 0%, #228B22 100%);
+      color: white;
+      letter-spacing: 1.5px;
+    }
+    
+    .input-container button:active {
+      transform: scale(0.98);
+    }
+    
+    .input-container button:disabled {
+      background: linear-gradient(135deg, #555 0%, #777 100%);
+      cursor: not-allowed;
+    }
+    
+    .status-message {
+      text-align: center;
+      margin: 15px 0;
+      min-height: 24px;
+      font-size: 14px;
+    }
+    
+    .result-container {
+      background: rgba(15, 15, 30, 0.9);
+      border-radius: 15px;
+      padding: 15px;
+      margin-top: 20px;
+      border: 1px solid rgba(138, 43, 226, 0.3);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+    
+    .code-display {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+    
+    .code-box {
+      background: linear-gradient(135deg, var(--primary) 0%, #0ac31e 100%);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: 2px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      flex-grow: 1;
+      text-align: center;
+      box-shadow: 0 0 10px rgb(13,100,4);
+    }
+    
+    .code-box:hover {
+      background: linear-gradient(135deg, var(--accent) 0%, #228B22 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(50, 205, 50, 0.4);
+    }
+    
+    .copy-btn {
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      color: var(--light);
+      padding: 12px 15px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .copy-btn:hover {
+      background: rgb(14, 250, 2);
+    }
+    
+    .instructions {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.7);
+      margin-top: 10px;
+      text-align: center;
+    }
+    
+    .social-media {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin: 20px 0;
+    }
+    
+    .social-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--light);
+      font-size: 18px;
+      transition: all 0.3s ease;
+      border: 1px solid rgb(13, 100, 2);
+    }
+ /*   .instagram {
+  background: linear-gradient(45deg, rgb(131,58,180), rgb(253,29,29), rgb(252,176,69));
+}
+.facebook {
+  background-color: rgb(24,119,242);
+}
+.youtube {
+  background-color: rgb(255,0,0);
+}
+.whatsapp {
+  background-color: rgb(37,211,102);
+}
+.telegram {
+  background-color: rgb(0,136,204);
+}*/
+    .w-icon:hover {
+      background: rgb(37,211,102);
+      transform: translateY(-3px);
+      box-shadow: var(--glow);
+    }
+    
+    .tik-icon:hover {
+  background: linear-gradient(45deg, rgb(25, 0, 7), rgb(0, 24, 34));
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: var(--glow);
+    }
+    
+    .i-icon:hover {
+      background: linear-gradient(45deg, rgb(131,58,180), rgb(253,29,29), rgb(252,176,69));
+      transform: translateY(-3px);
+      box-shadow: var(--glow);
+    }
+    
+    .t-icon:hover {
+      background: rgb(0,136,204);
+      transform: translateY(-3px);
+      box-shadow: var(--glow);
+    }
+    
+    .y-icon:hover {
+      background: rgb(255,0,0);
+      transform: translateY(-3px);
+      box-shadow: var(--glow);
+    }
+    
+    .fact-container {
+      background: rgba(15, 15, 30, 0.7);
+      border-radius: 15px;
+      padding: 15px;
+      margin: 20px 0;
+      border: 1px solid rgba(138, 43, 226, 0.3);
+      text-align: center;
+    }
+    
+    .fact-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 16px;
+      color: var(--secondary);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .fact-text {
+      font-size: 14px;
+      color: var(--light);
+      line-height: 1.5;
+    }
+    
+    .powered-by {
+      margin-top: 20px;
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.7);
+      text-align: center;
+    }
+    
+    .powered-by span {
+      color: #d89d11;
+      font-weight: 700;
+    }
+    
+    .footer {
+      margin-top: 20px;
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.5);
+      text-align: center;
+    }
+    .masky-color{
+      color: rgb(13, 500, 3);
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+    
+    @keyframes shine {
+      0% { transform: rotate(45deg) translateX(-100%); }
+      100% { transform: rotate(45deg) translateX(100%); }
+    }
+    
+    @media (max-width: 500px) {
+      .container {
+        padding: 15px;
+      } 
+      
+      .navigation {
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+      }
+      
+      .box {
+        padding: 20px;
+      }
+      
+      .input-container {
+        flex-direction: column;
+      }
+      
+      .input-container input {
+        border-radius: 12px;
+        margin-bottom: 5px;
+      }
+      
+      .input-container button {
+        border-radius: 12px;
+        padding: 12px;
+      }
+      
+      .code-display {
+        flex-direction: column;
+      }
+      
+      .copy-btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="particles" id="particles"></div>
+  
+  <div class="container">
+    <div class="navigation">
+      <div class="nav-item">Home</div>
+      <div class="nav-item">Features</div>
+      <div class="nav-item">Services</div>
+      <div class="nav-item">Support</div>
+    </div>
+    
+    <div class="vip-badge">
+      <i class="fas fa-crown"></i>
+      <span>MASKY-MINI BOT FREE</span>
+    </div>
+    
+    <div class="box">
+      <div class="box-content">
+        <div class="logo">
+          <div class="logo-text">MASKY PAIRING LINK</div>
+          <div class="logo-subtext">SECURE ACCESS</div>
+        </div>
+        
+        <div class="header">
+          <h3><i class="fas fa-infinity"></i> LINK WITH PHONE NUMBER <i class="fas fa-infinity"></i></h3>
+          <h6><i class="fas fa-tree"></i> ENTER YOUR NUMBER WITH COUNTRY CODE <i class="fas fa-tree"></i></h6>
+        </div>
+        
+        <div class="input-container">
+          <input placeholder="+234XXXXXXXX" type="tel" id="number" name="number">
+          <button id="submit"><i class="fas fa-paper-plane masky-color"></i> ENTER</button>
+        </div>
+        
+        <div class="status-message" id="status"></div>
+        
+        <main id="pair"></main>
+        
+        <div class="social-media">
+          <a href="https://whatsapp.com/channel/0029VbBxE4aCHDyiWOgOKr2X" class="w-icon social-icon"><i class="fab fa-whatsapp"></i></a>
+          <a href="#" class="t-icon social-icon"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.tiktok.com/@isreal_dev_tech?_r=1&_t=ZS-911Isv9URJF" class="tik-icon social-icon"><i class="fab fa-tiktok"></i></a>
+          <a href="https://t.me/masky_mini_bot" class="t-icon social-icon"><i class="fab fa-telegram"></i></a>
+          <a href="https://youtube.com/@isrealdevtech?si=2juTOIDx7oRxFFde" class="y-icon social-icon"><i class="fab fa-youtube"></i></a>
+        </div>
+        
+        <div class="fact-container">
+          <div class="fact-title">Did You Know?</div>
+          <div class="fact-text">WhatsApp processes over 100 billion messages daily, making it one of the most powerful communication platforms in the world.</div>
+        </div>
+        
+        <div class="powered-by">Powered by <span>Isreal Dev Tech</span> | <span>2025</span> Edition</div>
+      </div>
+    </div>
+    
+    <div class="footer">
+      <p>© 2025 MASKY-MINI | SECURE CONNECTION SYSTEM</p>
+    </div>
+  </div>
+
+  <script>
+    // Create particle effect
+    function createParticles() {
+      const particlesContainer = document.getElementById('particles');
+      const particleCount = 30;
+      
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        
+        const size = Math.random() * 5 + 2;
+        const posX = Math.random() * 100;
+        const posY = Math.random() * 100;
+        const delay = Math.random() * 5;
+        const duration = Math.random() * 10 + 10;
+        
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        particle.style.left = `${posX}%`;
+        particle.style.top = `${posY}%`;
+        particle.style.animation = `float ${duration}s ease-in-out ${delay}s infinite alternate`;
+        
+        particlesContainer.appendChild(particle);
+      }
+      
+      // Add floating animation
+      const style = document.createElement('style');
+      style.textContent = `
+        @keyframes float {
+          0% { transform: translate(0, 0) rotate(0deg); opacity: 0.7; }
+          50% { transform: translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px) rotate(180deg); opacity: 0.4; }
+          100% { transform: translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px) rotate(360deg); opacity: 0.7; }
+        }
+      `;
+      document.head.appendChild(style);
+    }
+    
+    // DOM elements
+    const pairElement = document.getElementById("pair");
+    const submitButton = document.getElementById("submit");
+    const numberInput = document.getElementById("number");
+    const statusMessage = document.getElementById("status");
+    
+    // Format phone number as user types
+    numberInput.addEventListener('input', function(e) {
+      let value = e.target.value.replace(/\D/g, '');
+      
+      if (value) {
+        value = '+' + value;
+        e.target.value = value;
+      }
+    });
+    
+    // Copy code to clipboard
+    async function copyCode() {
+      const codeElement = document.getElementById("code-text");
+      if (!codeElement) return;
+      
+      const code = codeElement.innerText;
+      
+      try {
+        await navigator.clipboard.writeText(code);
+        
+        const copyButton = document.getElementById("copy-button");
+        if (copyButton) {
+          copyButton.innerHTML = '<i class="fas fa-check"></i>';
+          
+          setTimeout(() => {
+            copyButton.innerHTML = '<i class="fas fa-copy"></i>';
+          }, 2000);
+        }
+        
+        statusMessage.innerHTML = '<span style="color: #32CD32;">Code copied to clipboard!</span>';
+      } catch (err) {
+        statusMessage.innerHTML = '<span style="color: #ff9d9d;">Failed to copy code</span>';
+      }
+    }
+    
+    // Submit phone number
+    submitButton.addEventListener("click", async (e) => {
+      e.preventDefault();
+      
+      if (!numberInput.value) {
+        statusMessage.innerHTML = '<span style="color: #ff9d9d;"><i class="fas fa-exclamation-circle"></i> Please enter your WhatsApp number</span>';
+        return;
+      }
+      
+      const cleanNumber = numberInput.value.replace(/\D/g, "");
+      
+      if (cleanNumber.length < 11) {
+        statusMessage.innerHTML = '<span style="color: #ff9d9d;"><i class="fas fa-exclamation-circle"></i> Invalid number format</span>';
+        return;
+      }
+      
+      // Show processing status
+      statusMessage.innerHTML = '<span style="color: #32CD32;"><i class="fas fa-spinner fa-spin"></i> Processing your request...</span>';
+      submitButton.disabled = true;
+      
+      try {
+        // API call to fetch the code
+        const response = await fetch(`/code?number=${cleanNumber}`);
+        
+        if (!response.ok) {
+          throw new Error('Service unavailable');
+        }
+        
+        const data = await response.json();
+        const code = data.code || "ꜱᴇʀᴠɪᴄᴇ ᴜɴᴀᴠᴀɪʟᴀʙʟᴇ";
+        
+        // Display the code
+        pairElement.innerHTML = `
+          <div class="result-container">
+            <div class="code-display">
+              <div class="code-box" onclick="copyCode()">
+                <span class="font-bold">CODE: </span>
+                <span id="code-text" class="font-extrabold">${code}</span>
+              </div>
+              <button class="copy-btn" id="copy-button" onclick="copyCode()">
+                <i class="fas fa-copy"></i>
+              </button>
+            </div>
+            <div class="instructions">Click to copy</div>
+          </div>
+        `;
+        
+        statusMessage.innerHTML = '<span style="color: #32CD32;"><i class="fas fa-check-circle"></i> Code generated successfully!</span>';
+      } catch (error) {
+        statusMessage.innerHTML = '<span style="color: #ff9d9d;"><i class="fas fa-exclamation-triangle"></i> ❌ ᴇʀʀᴏʀ ꜰᴇᴛᴄʜɪɴɢ ᴄᴏᴅᴇ. ᴘʟᴇᴀꜱᴇ ᴛʀʏ ᴀɢᴀɪɴ ❌</span>';
+        pairElement.innerHTML = '';
+      } finally {
+        submitButton.disabled = false;
+      }
+    });
+    
+    // Initialize the page
+    document.addEventListener('DOMContentLoaded', function() {
+      createParticles();
+    });
+  </script>
+</body>
+</html>

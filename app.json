@@ -1,9 +1,9 @@
 {
-  "name": "Edith-MD",
+  "name": "MASKY-MD-MINI",
   "description": "WhatsApp Multi-Device Bot",
-  "repository": "https://github.com/Bandah-E-Ali/Edith-MD",
-  "logo": "https://raw.githubusercontent.com/Bandah-E-Ali/Edith-MD/main/assets/logo.png",
-  "keywords": ["whatsapp", "bot", "edith-md", "baileys"],
+  "repository": "https://github.com/Isreal-Dev-Tech/MASKY-MD-MINI",
+  "logo": "https://raw.githubusercontent.com/Isreal-Dev-Tech/MASKY-MD-MINI/dyby.png",
+  "keywords": ["whatsapp", "bot", "masky-md", "baileys"],
   "env": {
     "GITHUB_TOKEN": {
       "description": "Your GitHub Personal Access Token (PAT) with repo permissions",

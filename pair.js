@@ -921,7 +921,7 @@ handleAlive: async (socket, sender, msg, number) => {
         console.error("Error in Alive command:", e);
         await socket.sendMessage(sender, { text: "❌ Error running alive command." });
     }
-};
+}
    handleMenu: async (socket, sender, msg, number) => {
     try {
         const startTime = socketCreationTime.get(number) || Date.now();

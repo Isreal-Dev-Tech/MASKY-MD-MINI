@@ -980,7 +980,7 @@ handleAlive: async (socket, sender, msg, number) => {
     await socket.sendMessage(sender, {
         image: { url: socket.userConfig.BUTTON_IMAGES.MENU },
         caption: menuText,
-        footer: `⚡ ${socket.userConfig.BOT_FOOTER}`
+        footer: `⚡ ${socket.userConfig.BOT_FOOTER}`,
          buttons: [
             { buttonId: `${socket.userConfig.PREFIX}owner`, buttonText: { displayText: '📜 BOT CREATOR' }, type: 1 },
             { buttonId: `${socket.userConfig.PREFIX}ping`, buttonText: { displayText: '📡 PING' }, type: 1 }
